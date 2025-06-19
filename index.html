@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Good Vibes Only | Танцевальный Event в Москве</title>
+    <style>
+      /* Общие стили */
+      :root {
+        --primary: rgb(237, 209, 210); /* Акцентный цвет */
+        --secondary: rgb(187, 227, 209); /* Основной цвет */
+        --dark: #1a1a2e;
+        --light: #ffffff;
+        --accent: rgb(237, 209, 210);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, var(--light) 0%, var(--secondary) 100%);
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      h1 {
+        font-size: 3.5rem;
+        line-height: 1.2;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        text-align: center;
+        color: var(--dark);
+      }
+
+      h3 {
+        font-size: 1.8rem;
+        color: var(--dark);
+      }
+
+      p {
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+      }
+
+      .btn {
+        display: inline-block;
+        background: var(--primary);
+        color: var(--dark);
+        padding: 12px 30px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(237, 209, 210, 0.5);
+      }
+
+      .btn:hover {
+        background: rgb(227, 199, 200);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(237, 209, 210, 0.7);
+      }
+
+      .btn-secondary {
+        background: var(--secondary);
+        box-shadow: 0 4px 15px rgba(187, 227, 209, 0.5);
+      }
+
+      .btn-secondary:hover {
+        background: rgb(167, 217, 189);
+        box-shadow: 0 6px 20px rgba(187, 227, 209, 0.7);
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      /* Hero секция */
+      #hero {
+        background: linear-gradient(135deg, var(--secondary) 0%, rgba(187, 227, 209, 0.8) 100%);
+        color: var(--dark);
+        padding: 120px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      #hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgwLDAsMCwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+        opacity: 0.3;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+      }
+
+      .hero-content p {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        opacity: 0.9;
+      }
+
+      .hero-date {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px);
+        padding: 10px 25px;
+        border-radius: 50px;
+        margin-bottom: 30px;
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: var(--dark);
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 20px;
+        margin-top: 40px;
+      }
+
+      .hero-image {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 40%;
+        max-width: 500px;
+        z-index: 0;
+        opacity: 0.9;
+        border-radius: 20px 0 0 0;
+        box-shadow: -10px -10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Секция участников */
+      #artists {
+        background-color: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+      }
+
+      .artists-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .artist-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(187, 227, 209, 0.5);
+      }
+
+      .artist-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .artist-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+
+      .artist-info {
+        padding: 25px;
+      }
+
+      .artist-info h3 {
+        margin-bottom: 10px;
+      }
+
+      .artist-role {
+        display: inline-block;
+        background: var(--primary);
+        color: var(--dark);
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      /* Секция расписания */
+      #schedule {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.8) 0%,
+          rgba(187, 227, 209, 0.4) 100%
+        );
+        backdrop-filter: blur(5px);
+      }
+
+      .schedule-container {
+        max-width: 800px;
+        margin: 50px auto 0;
+      }
+
+      .schedule-day {
+        margin-bottom: 40px;
+      }
+
+      .schedule-item {
+        background: white;
+        border-radius: 10px;
+        padding: 25px;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: center;
+        transition: transform 0.3s ease;
+        border: 1px solid rgba(187, 227, 209, 0.5);
+      }
+
+      .schedule-item:hover {
+        transform: translateX(10px);
+        border-color: var(--primary);
+      }
+
+      .schedule-time {
+        flex: 0 0 120px;
+        font-weight: 700;
+        color: var(--primary);
+        font-size: 1.1rem;
+      }
+
+      .schedule-details {
+        flex: 1;
+        padding-left: 20px;
+        border-left: 2px solid var(--secondary);
+      }
+
+      .schedule-artist {
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      /* Секция с картой */
+      #location {
+        background-color: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+      }
+
+      .map-container {
+        height: 500px;
+        margin-top: 50px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(187, 227, 209, 0.5);
+      }
+
+      .location-info {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      .location-card {
+        background: white;
+        padding: 20px 30px;
+        border-radius: 10px;
+        text-align: center;
+        min-width: 200px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(187, 227, 209, 0.5);
+      }
+
+      .location-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: var(--dark);
+      }
+
+      /* Секция с формой */
+      #registration {
+        background: linear-gradient(135deg, var(--secondary) 0%, rgba(187, 227, 209, 0.8) 100%);
+        color: var(--dark);
+      }
+
+      #registration h2 {
+        color: var(--dark);
+      }
+
+      .form-container {
+        max-width: 600px;
+        margin: 50px auto 0;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(237, 209, 210, 0.5);
+      }
+
+      .form-group {
+        margin-bottom: 25px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--dark);
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid var(--secondary);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--primary);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(237, 209, 210, 0.3);
+      }
+
+      .form-group textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.1rem;
+        margin-top: 10px;
+        background: var(--primary);
+        color: var(--dark);
+      }
+
+      /* Секция с призывом к действию */
+      #cta {
+        background: var(--primary);
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      #cta h2 {
+        color: var(--dark);
+        margin-bottom: 20px;
+      }
+
+      #cta p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+        color: var(--dark);
+      }
+
+      /* Футер */
+      footer {
+        background: var(--secondary);
+        color: var(--dark);
+        padding: 40px 0;
+        text-align: center;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 30px 0;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        color: var(--dark);
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+      }
+
+      .social-link:hover {
+        background: var(--primary);
+        transform: translateY(-3px);
+        color: var(--dark);
+      }
+
+      .copyright {
+        opacity: 0.7;
+        font-size: 0.9rem;
+      }
+
+      /* Анимации */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      .delay-1 {
+        animation-delay: 0.2s;
+      }
+      .delay-2 {
+        animation-delay: 0.4s;
+      }
+      .delay-3 {
+        animation-delay: 0.6s;
+      }
+      .delay-4 {
+        animation-delay: 0.8s;
+      }
+
+      /* Адаптивность */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+        h2 {
+          font-size: 2rem;
+        }
+
+        .hero-content {
+          text-align: center;
+        }
+        .hero-buttons {
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+        .hero-image {
+          display: none;
+        }
+
+        .schedule-item {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .schedule-time {
+          margin-bottom: 10px;
+        }
+        .schedule-details {
+          border-left: none;
+          padding-left: 0;
+          border-top: 2px solid var(--secondary);
+          padding-top: 10px;
+        }
+
+        .form-container {
+          padding: 30px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero секция -->
+    <section id="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-date fade-in">15 июля 2023 | Москва</div>
+          <h1 class="fade-in delay-1">Good Vibes Only</h1>
+          <p class="fade-in delay-2">
+            Московский танцевальный фестиваль, где встречаются ритм, энергия и хорошее настроение.
+            Присоединяйтесь к нам на незабываемый день музыки и движения!
+          </p>
+          <div class="hero-buttons fade-in delay-3">
+            <a
+              href="#registration"
+              class="btn"
+              >Записаться</a
+            >
+            <a
+              href="#schedule"
+              class="btn btn-secondary"
+              >Расписание</a
+            >
+          </div>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+          alt="Танцующие люди"
+          class="hero-image fade-in delay-4" />
+      </div>
+    </section>
+
+    <!-- Секция участников -->
+    <section
+      id="artists"
+      class="section">
+      <div class="container">
+        <h2>Наши участники</h2>
+        <p class="text-center">Лучшие танцоры и хореографы Москвы соберутся на одной сцене</p>
+
+        <div class="artists-grid">
+          <div class="artist-card fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt="Алексей Иванов"
+              class="artist-image" />
+            <div class="artist-info">
+              <span class="artist-role">Хип-хоп</span>
+              <h3>Алексей Иванов</h3>
+              <p>Чемпион России по хип-хопу, основатель школы "Street Motion".</p>
+            </div>
+          </div>
+
+          <div class="artist-card fade-in delay-1">
+            <img
+              src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+              alt="Екатерина Смирнова"
+              class="artist-image" />
+            <div class="artist-info">
+              <span class="artist-role">Контемпорари</span>
+              <h3>Екатерина Смирнова</h3>
+              <p>Призер международных конкурсов, хореограф театра "Практика".</p>
+            </div>
+          </div>
+
+          <div class="artist-card fade-in delay-2">
+            <img
+              src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+              alt="Дмитрий Петров"
+              class="artist-image" />
+            <div class="artist-info">
+              <span class="artist-role">Брейк-данс</span>
+              <h3>Дмитрий Петров</h3>
+              <p>Участник команды "Top Rockers", финалист Red Bull BC One.</p>
+            </div>
+          </div>
+
+          <div class="artist-card fade-in delay-3">
+            <img
+              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt="Анна Козлова"
+              class="artist-image" />
+            <div class="artist-info">
+              <span class="artist-role">Джаз-фанк</span>
+              <h3>Анна Козлова</h3>
+              <p>Хореограф шоу "Танцы" на ТНТ, основатель студии "Funky Move".</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция расписания -->
+    <section
+      id="schedule"
+      class="section">
+      <div class="container">
+        <h2>Расписание</h2>
+        <p class="text-center">Программа мероприятия на 15 июля 2023 года</p>
+
+        <div class="schedule-container">
+          <div class="schedule-day fade-in">
+            <h3>Основная сцена</h3>
+
+            <div class="schedule-item">
+              <div class="schedule-time">12:00 - 13:00</div>
+              <div class="schedule-details">
+                <h4 class="schedule-title">Открытие фестиваля</h4>
+                <p class="schedule-artist">Good Vibes Crew</p>
+                <p>Торжественное открытие с показательными выступлениями</p>
+              </div>
+            </div>
+
+            <div class="schedule-item delay-1">
+              <div class="schedule-time">13:30 - 14:30</div>
+              <div class="schedule-details">
+                <h4 class="schedule-title">Хип-хоп баттл</h4>
+                <p class="schedule-artist">Алексей Иванов и команды</p>
+                <p>Открытый баттл с призовым фондом 50,000 руб</p>
+              </div>
+            </div>
+
+            <div class="schedule-item delay-2">
+              <div class="schedule-time">15:00 - 16:30</div>
+              <div class="schedule-details">
+                <h4 class="schedule-title">Контемпорари перформанс</h4>
+                <p class="schedule-artist">Екатерина Смирнова</p>
+                <p>"Границы тела" - авторская постановка</p>
+              </div>
+            </div>
+
+            <div class="schedule-item delay-3">
+              <div class="schedule-time">17:00 - 18:30</div>
+              <div class="schedule-details">
+                <h4 class="schedule-title">Брейк-данс шоу</h4>
+                <p class="schedule-artist">Дмитрий Петров & Top Rockers</p>
+                <p>Энергичное выступление с элементами акробатики</p>
+              </div>
+            </div>
+
+            <div class="schedule-item delay-4">
+              <div class="schedule-time">19:00 - 20:30</div>
+              <div class="schedule-details">
+                <h4 class="schedule-title">Закрытие фестиваля</h4>
+                <p class="schedule-artist">Все участники</p>
+                <p>Общий джем и награждение победителей</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция с картой -->
+    <section
+      id="location"
+      class="section">
+      <div class="container">
+        <h2>Место проведения</h2>
+        <p class="text-center">Фестиваль пройдет в самом сердце Москвы</p>
+
+        <div
+          class="map-container fade-in"
+          id="map">
+          <!-- Яндекс карта будет вставлена через JS -->
+        </div>
+
+        <div class="location-info">
+          <div class="location-card fade-in delay-1">
+            <h3>Адрес</h3>
+            <p>Крымская наб., 10</p>
+            <p>Парк искусств "Музеон"</p>
+          </div>
+
+          <div class="location-card fade-in delay-2">
+            <h3>Дата</h3>
+            <p>15 июля 2023</p>
+            <p>12:00 - 21:00</p>
+          </div>
+
+          <div class="location-card fade-in delay-3">
+            <h3>Контакты</h3>
+            <p>+7 (495) 123-45-67</p>
+            <p>info@goodvibes.ru</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция с формой -->
+    <section
+      id="registration"
+      class="section">
+      <div class="container">
+        <h2>Запись на мероприятие</h2>
+        <p class="text-center">Оставьте заявку, чтобы гарантировать себе место</p>
+
+        <div class="form-container fade-in">
+          <form
+            id="event-form"
+            class="event-form">
+            <div class="form-group">
+              <label for="name">Ваше имя</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Телефон</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                required />
+            </div>
+
+            <div class="form-group">
+              <label for="ticket-type">Тип билета</label>
+              <select
+                id="ticket-type"
+                name="ticket-type"
+                required>
+                <option
+                  value=""
+                  disabled
+                  selected>
+                  Выберите вариант
+                </option>
+                <option value="standard">Стандарт (1500 руб)</option>
+                <option value="vip">VIP (3000 руб)</option>
+                <option value="workshop">Мастер-класс + вход (4500 руб)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Ваши пожелания</label>
+              <textarea
+                id="message"
+                name="message"></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="btn submit-btn">
+              Отправить заявку
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция с призывом к действию -->
+    <section
+      id="cta"
+      class="section">
+      <div class="container">
+        <h2 class="fade-in">Готовы к незабываемым впечатлениям?</h2>
+        <p class="fade-in delay-1">
+          Good Vibes Only - это не просто танцевальный фестиваль, это пространство для
+          самовыражения, новых знакомств и положительных эмоций. Присоединяйтесь!
+        </p>
+        <a
+          href="#registration"
+          class="btn fade-in delay-2"
+          >Забронировать место</a
+        >
+      </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+      <div class="container">
+        <h3>Good Vibes Only</h3>
+        <p>Танцевальный фестиваль в Москве</p>
+
+        <div class="social-links">
+          <a
+            href="#"
+            class="social-link"
+            ><i>VK</i></a
+          >
+          <a
+            href="#"
+            class="social-link"
+            ><i>TG</i></a
+          >
+          <a
+            href="#"
+            class="social-link"
+            ><i>IG</i></a
+          >
+          <a
+            href="#"
+            class="social-link"
+            ><i>YT</i></a
+          >
+        </div>
+
+        <p class="copyright">© 2023 Good Vibes Only. Все права защищены.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Инициализация карты
+      function initMap() {
+        // Координаты места проведения (Парк Музеон)
+        const location = { lat: 55.7358, lng: 37.6068 };
+
+        // Создание карты
+        const map = new ymaps.Map('map', {
+          center: location,
+          zoom: 16,
+        });
+
+        // Добавление метки
+        const placemark = new ymaps.Placemark(
+          location,
+          {
+            hintContent: 'Парк искусств "Музеон"',
+            balloonContent: 'Место проведения фестиваля Good Vibes Only',
+          },
+          {
+            iconLayout: 'default#image',
+            iconImageHref: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+            iconImageSize: [40, 40],
+            iconImageOffset: [-20, -40],
+          }
+        );
+
+        map.geoObjects.add(placemark);
+        map.controls.remove('geolocationControl');
+        map.controls.remove('searchControl');
+        map.controls.remove('trafficControl');
+        map.controls.remove('typeSelector');
+        map.controls.remove('fullscreenControl');
+        map.controls.remove('rulerControl');
+      }
+
+      // Загрузка API Яндекс.Карт
+      function loadYandexMap() {
+        const script = document.createElement('script');
+        script.src =
+          'https://api-maps.yandex.ru/2.1/?apikey=ваш_api_ключ&lang=ru_RU&onload=initMap';
+        document.head.appendChild(script);
+      }
+
+      // Обработка формы
+      document.getElementById('event-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Здесь должна быть логика отправки формы
+        // Для демонстрации просто покажем сообщение
+        alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
+        this.reset();
+      });
+
+      // Анимация при скролле
+      function animateOnScroll() {
+        const elements = document.querySelectorAll('.fade-in');
+
+        elements.forEach((element) => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+
+          if (elementPosition < screenPosition) {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+          }
+        });
+      }
+
+      // Инициализация
+      document.addEventListener('DOMContentLoaded', function () {
+        loadYandexMap();
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Запустить сразу для видимых элементов
+      });
+    </script>
+  </body>
+</html>
