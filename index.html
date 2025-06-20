@@ -462,6 +462,18 @@
         animation-delay: 0.8s;
       }
 
+      .register-btns {
+        display: flex;
+        gap: 20px;
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      .register-btns > .btn {
+        width: 200px;
+        text-align: center;
+      }
+
       /* Адаптивность */
       @media (max-width: 768px) {
         h1 {
@@ -499,6 +511,16 @@
         .form-container {
           padding: 30px 20px;
         }
+
+        .register-btns {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .register-btns > .btn {
+          width: 100%;
+          text-align: center;
+        }
       }
     </style>
   </head>
@@ -507,7 +529,7 @@
     <section id="hero">
       <div class="container">
         <div class="hero-content">
-          <div class="hero-date fade-in">15 июля 2023 | Москва</div>
+          <div class="hero-date fade-in">23 августа 2025 | Москва</div>
           <h1 class="fade-in delay-1">Good Vibes Only</h1>
           <p class="fade-in delay-2">
             Московский танцевальный фестиваль, где встречаются ритм, энергия и хорошее настроение.
@@ -517,7 +539,7 @@
             <a
               href="#registration"
               class="btn"
-              >Записаться</a
+              >Регистрация</a
             >
             <a
               href="#schedule"
@@ -526,10 +548,17 @@
             >
           </div>
         </div>
-        <img
+        <!-- <video
+          src="./IMG_8628.MP4"
+          playsinline
+          autoplay
+          loop
+          muted
+          class="hero-image fade-in delay-4" /> -->
+        <!-- <img
           src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
           alt="Танцующие люди"
-          class="hero-image fade-in delay-4" />
+          class="hero-image fade-in delay-4" /> -->
       </div>
     </section>
 
@@ -599,7 +628,7 @@
       class="section">
       <div class="container">
         <h2>Расписание</h2>
-        <p class="text-center">Программа мероприятия на 15 июля 2023 года</p>
+        <p class="text-center">Программа мероприятия на 23 августа 2025 года</p>
 
         <div class="schedule-container">
           <div class="schedule-day fade-in">
@@ -677,7 +706,7 @@
 
           <div class="location-card fade-in delay-2">
             <h3>Дата</h3>
-            <p>15 июля 2023</p>
+            <p>23 августа 2025</p>
             <p>12:00 - 21:00</p>
           </div>
 
@@ -695,90 +724,22 @@
       id="registration"
       class="section">
       <div class="container">
-        <h2>Запись на мероприятие</h2>
-        <p class="text-center">Оставьте заявку, чтобы гарантировать себе место</p>
+        <h2>Регистрация</h2>
 
-        <div class="form-container fade-in">
-          <form
-            id="event-form"
-            class="event-form">
-            <div class="form-group">
-              <label for="name">Ваше имя</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required />
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required />
-            </div>
-
-            <div class="form-group">
-              <label for="phone">Телефон</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                required />
-            </div>
-
-            <div class="form-group">
-              <label for="ticket-type">Тип билета</label>
-              <select
-                id="ticket-type"
-                name="ticket-type"
-                required>
-                <option
-                  value=""
-                  disabled
-                  selected>
-                  Выберите вариант
-                </option>
-                <option value="standard">Стандарт (1500 руб)</option>
-                <option value="vip">VIP (3000 руб)</option>
-                <option value="workshop">Мастер-класс + вход (4500 руб)</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="message">Ваши пожелания</label>
-              <textarea
-                id="message"
-                name="message"></textarea>
-            </div>
-
-            <button
-              type="submit"
-              class="btn submit-btn">
-              Отправить заявку
-            </button>
-          </form>
+        <div class="register-btns fade-in delay-3">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSchnCjOHkzzY8Lyzmzrm7UVSEFTvs8hqDl1wVKhzuGdRtFsPQ/viewform"
+            class="btn"
+            target="_blank"
+            >Мастер-классы</a
+          >
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLScc7k2nrkGH3fw6lO2iOz5NoduTNUw3HNef416fZtO4C_QhJw/viewform?pli=1"
+            class="btn"
+            target="_blank"
+            >Баттлы</a
+          >
         </div>
-      </div>
-    </section>
-
-    <!-- Секция с призывом к действию -->
-    <section
-      id="cta"
-      class="section">
-      <div class="container">
-        <h2 class="fade-in">Готовы к незабываемым впечатлениям?</h2>
-        <p class="fade-in delay-1">
-          Good Vibes Only - это не просто танцевальный фестиваль, это пространство для
-          самовыражения, новых знакомств и положительных эмоций. Присоединяйтесь!
-        </p>
-        <a
-          href="#registration"
-          class="btn fade-in delay-2"
-          >Забронировать место</a
-        >
       </div>
     </section>
 
@@ -811,7 +772,7 @@
           >
         </div>
 
-        <p class="copyright">© 2023 Good Vibes Only. Все права защищены.</p>
+        <p class="copyright">© 2025 Good Vibes Only. Все права защищены.</p>
       </div>
     </footer>
 
