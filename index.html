@@ -24,7 +24,7 @@
       }
 
       body {
-        background: linear-gradient(135deg, var(--light) 0%, var(--secondary) 100%);
+        /* background: linear-gradient(135deg, var(--light) 0%, var(--secondary) 100%); */
         color: var(--dark);
         line-height: 1.6;
       }
@@ -33,6 +33,14 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
+      }
+
+      [class*='ymaps'][class*='-ground-pane'] {
+        filter: grayscale(1);
+        -ms-filter: grayscale(1);
+        -webkit-filter: grayscale(1);
+        -moz-filter: grayscale(1);
+        -o-filter: grayscale(1);
       }
 
       section {
@@ -69,7 +77,7 @@
 
       .btn {
         display: inline-block;
-        background: var(--primary);
+        background: white;
         color: var(--dark);
         padding: 12px 30px;
         border: none;
@@ -79,7 +87,7 @@
         font-weight: 600;
         text-decoration: none;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(237, 209, 210, 0.5);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
       }
 
       .btn:hover {
@@ -146,6 +154,11 @@
         color: var(--dark);
       }
 
+      .main-image {
+        display: none;
+        width: 100%;
+      }
+
       .hero-buttons {
         display: flex;
         gap: 20px;
@@ -162,6 +175,8 @@
         opacity: 0.9;
         border-radius: 20px 0 0 0;
         box-shadow: -10px -10px 30px rgba(0, 0, 0, 0.1);
+        object-fit: contain;
+        object-position: center;
       }
 
       /* Секция участников */
@@ -218,12 +233,12 @@
 
       /* Секция расписания */
       #schedule {
-        background: linear-gradient(
+        /* background: linear-gradient(
           135deg,
           rgba(255, 255, 255, 0.8) 0%,
           rgba(187, 227, 209, 0.4) 100%
         );
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px); */
       }
 
       .schedule-container {
@@ -311,6 +326,7 @@
 
       /* Секция с формой */
       #registration {
+        background-color: white;
         background: linear-gradient(135deg, var(--secondary) 0%, rgba(187, 227, 209, 0.8) 100%);
         color: var(--dark);
       }
@@ -474,6 +490,10 @@
         text-align: center;
       }
 
+      .main {
+        display: none;
+      }
+
       /* Адаптивность */
       @media (max-width: 768px) {
         h1 {
@@ -481,6 +501,14 @@
         }
         h2 {
           font-size: 2rem;
+        }
+
+        #registration {
+          background-color: white;
+        }
+
+        #hero {
+          display: none;
         }
 
         .hero-content {
@@ -493,6 +521,9 @@
         .hero-image {
           display: none;
         }
+        .main-image {
+          display: block;
+        }
 
         .schedule-item {
           flex-direction: column;
@@ -500,6 +531,7 @@
         }
         .schedule-time {
           margin-bottom: 10px;
+          flex: unset;
         }
         .schedule-details {
           border-left: none;
@@ -513,28 +545,60 @@
         }
 
         .register-btns {
+          align-items: center;
           flex-direction: column;
+          position: absolute;
+          bottom: 20px;
+          left: 0;
           width: 100%;
         }
 
         .register-btns > .btn {
-          width: 100%;
+          width: 65%;
+          background-color: white;
+          color: black;
           text-align: center;
+        }
+
+        .main {
+          display: block;
+          position: relative;
+          padding: 0;
         }
       }
     </style>
+    <!-- <script src="https://api-maps.yandex.ru/v3/?apikey=652fc537-b0ce-4622-acc4-94b62d0ae70f&lang=ru_RU"></script> -->
+    <script
+      src="https://api-maps.yandex.ru/2.1/?apikey=652fc537-b0ce-4622-acc4-94b62d0ae70f&lang=ru_RU"
+      type="text/javascript"></script>
   </head>
   <body>
+    <section class="main">
+      <img
+        src="./good_vibes.jpeg"
+        alt="good-vibes-only"
+        class="main-image" />
+      <div class="register-btns fade-in delay-3">
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSchnCjOHkzzY8Lyzmzrm7UVSEFTvs8hqDl1wVKhzuGdRtFsPQ/viewform"
+          class="btn"
+          target="_blank"
+          >Classes</a
+        >
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLScc7k2nrkGH3fw6lO2iOz5NoduTNUw3HNef416fZtO4C_QhJw/viewform?pli=1"
+          class="btn"
+          target="_blank"
+          >Battles</a
+        >
+      </div>
+    </section>
     <!-- Hero секция -->
     <section id="hero">
       <div class="container">
         <div class="hero-content">
           <div class="hero-date fade-in">23 августа 2025 | Москва</div>
           <h1 class="fade-in delay-1">Good Vibes Only</h1>
-          <p class="fade-in delay-2">
-            Московский танцевальный фестиваль, где встречаются ритм, энергия и хорошее настроение.
-            Присоединяйтесь к нам на незабываемый день музыки и движения!
-          </p>
           <div class="hero-buttons fade-in delay-3">
             <a
               href="#registration"
@@ -548,134 +612,69 @@
             >
           </div>
         </div>
-        <!-- <video
-          src="./IMG_8628.MP4"
-          playsinline
-          autoplay
-          loop
-          muted
-          class="hero-image fade-in delay-4" /> -->
-        <!-- <img
-          src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-          alt="Танцующие люди"
-          class="hero-image fade-in delay-4" /> -->
       </div>
     </section>
 
-    <!-- Секция участников -->
-    <section
-      id="artists"
-      class="section">
-      <div class="container">
-        <h2>Наши участники</h2>
-        <p class="text-center">Лучшие танцоры и хореографы Москвы соберутся на одной сцене</p>
-
-        <div class="artists-grid">
-          <div class="artist-card fade-in">
-            <img
-              src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-              alt="Алексей Иванов"
-              class="artist-image" />
-            <div class="artist-info">
-              <span class="artist-role">Хип-хоп</span>
-              <h3>Алексей Иванов</h3>
-              <p>Чемпион России по хип-хопу, основатель школы "Street Motion".</p>
-            </div>
-          </div>
-
-          <div class="artist-card fade-in delay-1">
-            <img
-              src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-              alt="Екатерина Смирнова"
-              class="artist-image" />
-            <div class="artist-info">
-              <span class="artist-role">Контемпорари</span>
-              <h3>Екатерина Смирнова</h3>
-              <p>Призер международных конкурсов, хореограф театра "Практика".</p>
-            </div>
-          </div>
-
-          <div class="artist-card fade-in delay-2">
-            <img
-              src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
-              alt="Дмитрий Петров"
-              class="artist-image" />
-            <div class="artist-info">
-              <span class="artist-role">Брейк-данс</span>
-              <h3>Дмитрий Петров</h3>
-              <p>Участник команды "Top Rockers", финалист Red Bull BC One.</p>
-            </div>
-          </div>
-
-          <div class="artist-card fade-in delay-3">
-            <img
-              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-              alt="Анна Козлова"
-              class="artist-image" />
-            <div class="artist-info">
-              <span class="artist-role">Джаз-фанк</span>
-              <h3>Анна Козлова</h3>
-              <p>Хореограф шоу "Танцы" на ТНТ, основатель студии "Funky Move".</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Секция расписания -->
     <section
       id="schedule"
       class="section">
       <div class="container">
         <h2>Расписание</h2>
-        <p class="text-center">Программа мероприятия на 23 августа 2025 года</p>
 
         <div class="schedule-container">
           <div class="schedule-day fade-in">
-            <h3>Основная сцена</h3>
+            <h3>Мастер-классы</h3>
 
             <div class="schedule-item">
-              <div class="schedule-time">12:00 - 13:00</div>
+              <div class="schedule-time">11:00 - 12:30</div>
               <div class="schedule-details">
-                <h4 class="schedule-title">Открытие фестиваля</h4>
-                <p class="schedule-artist">Good Vibes Crew</p>
-                <p>Торжественное открытие с показательными выступлениями</p>
+                <p class="schedule-artist">Юля</p>
               </div>
             </div>
 
             <div class="schedule-item delay-1">
-              <div class="schedule-time">13:30 - 14:30</div>
+              <div class="schedule-time">12:45 - 14:15</div>
               <div class="schedule-details">
-                <h4 class="schedule-title">Хип-хоп баттл</h4>
-                <p class="schedule-artist">Алексей Иванов и команды</p>
-                <p>Открытый баттл с призовым фондом 50,000 руб</p>
+                <p class="schedule-artist">Маша</p>
               </div>
             </div>
 
             <div class="schedule-item delay-2">
-              <div class="schedule-time">15:00 - 16:30</div>
+              <div class="schedule-time">14:30 - 16:00</div>
               <div class="schedule-details">
-                <h4 class="schedule-title">Контемпорари перформанс</h4>
-                <p class="schedule-artist">Екатерина Смирнова</p>
-                <p>"Границы тела" - авторская постановка</p>
+                <p class="schedule-artist">Сабрина</p>
               </div>
             </div>
+          </div>
+
+          <div class="schedule-day fade-in">
+            <h3>Баттлы</h3>
 
             <div class="schedule-item delay-3">
-              <div class="schedule-time">17:00 - 18:30</div>
+              <div class="schedule-time">18:00 - 19:00</div>
               <div class="schedule-details">
-                <h4 class="schedule-title">Брейк-данс шоу</h4>
-                <p class="schedule-artist">Дмитрий Петров & Top Rockers</p>
-                <p>Энергичное выступление с элементами акробатики</p>
+                <h4 class="schedule-title">Dancehall Beginners Battle</h4>
               </div>
             </div>
 
             <div class="schedule-item delay-4">
-              <div class="schedule-time">19:00 - 20:30</div>
+              <div class="schedule-time">19:00 - 20:00</div>
               <div class="schedule-details">
-                <h4 class="schedule-title">Закрытие фестиваля</h4>
-                <p class="schedule-artist">Все участники</p>
-                <p>Общий джем и награждение победителей</p>
+                <h4 class="schedule-title">Dancehall Pro Battle</h4>
+              </div>
+            </div>
+
+            <div class="schedule-item delay-5">
+              <div class="schedule-time">20:00 - 21:00</div>
+              <div class="schedule-details">
+                <h4 class="schedule-title">Female Dancehall Battle</h4>
+              </div>
+            </div>
+
+            <div class="schedule-item delay-6">
+              <div class="schedule-time">21:00 - 22:00</div>
+              <div class="schedule-details">
+                <h4 class="schedule-title">Vibe Battle</h4>
               </div>
             </div>
           </div>
@@ -689,7 +688,6 @@
       class="section">
       <div class="container">
         <h2>Место проведения</h2>
-        <p class="text-center">Фестиваль пройдет в самом сердце Москвы</p>
 
         <div
           class="map-container fade-in"
@@ -700,45 +698,20 @@
         <div class="location-info">
           <div class="location-card fade-in delay-1">
             <h3>Адрес</h3>
-            <p>Крымская наб., 10</p>
-            <p>Парк искусств "Музеон"</p>
+            <p>1-й Щипковский переулок, 16с1</p>
           </div>
 
           <div class="location-card fade-in delay-2">
             <h3>Дата</h3>
             <p>23 августа 2025</p>
-            <p>12:00 - 21:00</p>
+            <p>11:00 - 22:00</p>
           </div>
 
-          <div class="location-card fade-in delay-3">
+          <!-- <div class="location-card fade-in delay-3">
             <h3>Контакты</h3>
             <p>+7 (495) 123-45-67</p>
             <p>info@goodvibes.ru</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Секция с формой -->
-    <section
-      id="registration"
-      class="section">
-      <div class="container">
-        <h2>Регистрация</h2>
-
-        <div class="register-btns fade-in delay-3">
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSchnCjOHkzzY8Lyzmzrm7UVSEFTvs8hqDl1wVKhzuGdRtFsPQ/viewform"
-            class="btn"
-            target="_blank"
-            >Мастер-классы</a
-          >
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLScc7k2nrkGH3fw6lO2iOz5NoduTNUw3HNef416fZtO4C_QhJw/viewform?pli=1"
-            class="btn"
-            target="_blank"
-            >Баттлы</a
-          >
+          </div> -->
         </div>
       </div>
     </section>
@@ -747,29 +720,37 @@
     <footer>
       <div class="container">
         <h3>Good Vibes Only</h3>
-        <p>Танцевальный фестиваль в Москве</p>
 
         <div class="social-links">
           <a
-            href="#"
+            href="https://t.me/goodvibesonlyweekend"
             class="social-link"
-            ><i>VK</i></a
-          >
+            target="_blank"
+            rel="noopener noreferrer">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8l-1.89 8.66c-.1.48-.36.6-.74.38l-3.13-2.3-1.5 1.45c-.16.16-.3.3-.6.3l.21-3.05 5.79-5.24c.24-.22.0-.27.37-.1l-7.22 4.55-3.1-.97c-.47-.15-.48-.47.1-.68l12-4.62c.39-.15.74.1.6.69z" />
+            </svg>
+          </a>
           <a
-            href="#"
+            href="https://www.instagram.com/good.vibes.only.weekend?igsh=MWF3ODVxM3IxOXk0YQ%3D%3D&utm_source=qr"
             class="social-link"
-            ><i>TG</i></a
-          >
-          <a
-            href="#"
-            class="social-link"
-            ><i>IG</i></a
-          >
-          <a
-            href="#"
-            class="social-link"
-            ><i>YT</i></a
-          >
+            target="_blank"
+            rel="noopener noreferrer">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+            </svg>
+          </a>
         </div>
 
         <p class="copyright">© 2025 Good Vibes Only. Все права защищены.</p>
@@ -777,58 +758,81 @@
     </footer>
 
     <script>
-      // Инициализация карты
-      function initMap() {
-        // Координаты места проведения (Парк Музеон)
-        const location = { lat: 55.7358, lng: 37.6068 };
-
-        // Создание карты
-        const map = new ymaps.Map('map', {
+      ymaps.ready(init);
+      function init() {
+        const location = [55.722756, 37.633311];
+        // Создание карты.
+        var myMap = new ymaps.Map('map', {
+          // Координаты центра карты.
+          // Порядок по умолчанию: «широта, долгота».
+          // Чтобы не определять координаты центра карты вручную,
+          // воспользуйтесь инструментом Определение координат.
           center: location,
+          // Уровень масштабирования. Допустимые значения:
+          // от 0 (весь мир) до 19.
           zoom: 16,
         });
 
         // Добавление метки
-        const placemark = new ymaps.Placemark(
-          location,
-          {
-            hintContent: 'Парк искусств "Музеон"',
-            balloonContent: 'Место проведения фестиваля Good Vibes Only',
+        var myPlacemark = new ymaps.GeoObject({
+          geometry: {
+            type: 'Point',
+            coordinates: location,
           },
-          {
-            iconLayout: 'default#image',
-            iconImageHref: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
-            iconImageSize: [40, 40],
-            iconImageOffset: [-20, -40],
-          }
-        );
+        });
 
-        map.geoObjects.add(placemark);
-        map.controls.remove('geolocationControl');
-        map.controls.remove('searchControl');
-        map.controls.remove('trafficControl');
-        map.controls.remove('typeSelector');
-        map.controls.remove('fullscreenControl');
-        map.controls.remove('rulerControl');
+        myMap.geoObjects.add(myPlacemark);
+        myMap.controls.remove('geolocationControl');
+        myMap.controls.remove('searchControl');
+        myMap.controls.remove('trafficControl');
+        myMap.controls.remove('typeSelector');
+        myMap.controls.remove('fullscreenControl');
+        myMap.controls.remove('rulerControl');
       }
 
-      // Загрузка API Яндекс.Карт
-      function loadYandexMap() {
-        const script = document.createElement('script');
-        script.src =
-          'https://api-maps.yandex.ru/2.1/?apikey=ваш_api_ключ&lang=ru_RU&onload=initMap';
-        document.head.appendChild(script);
-      }
+      // function initMap() {
+      //   // Координаты места проведения (Парк Музеон)
+      //   const location = { lat: 55.7358, lng: 37.6068 };
+
+      //   // Создание карты
+      //   const map = new ymaps.Map('map', {
+      //     center: location,
+      //     zoom: 16,
+      //   });
+
+      //   // Добавление метки
+      //   const placemark = new ymaps.Placemark(
+      //     location,
+      //     {
+      //       hintContent: 'Парк искусств "Музеон"',
+      //       balloonContent: 'Место проведения фестиваля Good Vibes Only',
+      //     },
+      //     {
+      //       iconLayout: 'default#image',
+      //       iconImageHref: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
+      //       iconImageSize: [40, 40],
+      //       iconImageOffset: [-20, -40],
+      //     }
+      //   );
+
+      //   map.geoObjects.add(placemark);
+      //   map.controls.remove('geolocationControl');
+      //   map.controls.remove('searchControl');
+      //   map.controls.remove('trafficControl');
+      //   map.controls.remove('typeSelector');
+      //   map.controls.remove('fullscreenControl');
+      //   map.controls.remove('rulerControl');
+      // }
 
       // Обработка формы
-      document.getElementById('event-form').addEventListener('submit', function (e) {
-        e.preventDefault();
+      // document.getElementById('event-form').addEventListener('submit', function (e) {
+      //   e.preventDefault();
 
-        // Здесь должна быть логика отправки формы
-        // Для демонстрации просто покажем сообщение
-        alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
-        this.reset();
-      });
+      //   // Здесь должна быть логика отправки формы
+      //   // Для демонстрации просто покажем сообщение
+      //   alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
+      //   this.reset();
+      // });
 
       // Анимация при скролле
       function animateOnScroll() {
@@ -847,7 +851,7 @@
 
       // Инициализация
       document.addEventListener('DOMContentLoaded', function () {
-        loadYandexMap();
+        // loadYandexMap();
         window.addEventListener('scroll', animateOnScroll);
         animateOnScroll(); // Запустить сразу для видимых элементов
       });
