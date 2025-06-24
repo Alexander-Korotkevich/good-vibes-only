@@ -134,6 +134,7 @@
         position: relative;
         z-index: 1;
         max-width: 800px;
+        margin: 0 auto;
       }
 
       .hero-content p {
@@ -142,13 +143,18 @@
         opacity: 0.9;
       }
 
+      .hero-content h1 {
+        text-align: center;
+      }
+
       .hero-date {
-        display: inline-block;
+        display: flex;
+        width: fit-content;
         background: rgba(255, 255, 255, 0.5);
         backdrop-filter: blur(10px);
         padding: 10px 25px;
         border-radius: 50px;
-        margin-bottom: 30px;
+        margin: 0 auto 80px;
         font-weight: 600;
         font-size: 1.2rem;
         color: var(--dark);
@@ -597,18 +603,20 @@
     <section id="hero">
       <div class="container">
         <div class="hero-content">
-          <div class="hero-date fade-in">23 августа 2025 | Москва</div>
           <h1 class="fade-in delay-1">Good Vibes Only</h1>
-          <div class="hero-buttons fade-in delay-3">
+          <div class="hero-date fade-in">23 августа 2025 | Москва</div>
+          <div class="register-btns fade-in delay-3">
             <a
-              href="#registration"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSchnCjOHkzzY8Lyzmzrm7UVSEFTvs8hqDl1wVKhzuGdRtFsPQ/viewform"
               class="btn"
-              >Регистрация</a
+              target="_blank"
+              >Classes</a
             >
             <a
-              href="#schedule"
-              class="btn btn-secondary"
-              >Расписание</a
+              href="https://docs.google.com/forms/d/e/1FAIpQLScc7k2nrkGH3fw6lO2iOz5NoduTNUw3HNef416fZtO4C_QhJw/viewform?pli=1"
+              class="btn"
+              target="_blank"
+              >Battles</a
             >
           </div>
         </div>
@@ -623,7 +631,7 @@
 
         <div class="schedule-container">
           <div class="schedule-day fade-in">
-            <h3>Мастер-классы</h3>
+            <h3>Classes</h3>
 
             <div class="schedule-item">
               <div class="schedule-time">11:00 - 12:30</div>
@@ -648,7 +656,7 @@
           </div>
 
           <div class="schedule-day fade-in">
-            <h3>Баттлы</h3>
+            <h3>Battles</h3>
 
             <div class="schedule-item delay-3">
               <div class="schedule-time">18:00 - 19:00</div>
