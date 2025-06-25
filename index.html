@@ -5,7 +5,10 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0" />
-    <title>Good Vibes Only | Танцевальный Event в Москве</title>
+    <link
+      rel="icon"
+      href="./favicon3.jpg" />
+    <title>Good Vibes Only | Dancehall Event в Москве</title>
     <style>
       /* Общие стили */
       :root {
@@ -276,7 +279,7 @@
       .schedule-time {
         flex: 0 0 120px;
         font-weight: 700;
-        color: var(--primary);
+        color: var(--dark);
         font-size: 1.1rem;
       }
 
@@ -286,9 +289,13 @@
         border-left: 2px solid var(--secondary);
       }
 
+      .schedule-title.primary {
+        color: var(--primary);
+      }
+
       .schedule-artist {
         font-weight: 600;
-        color: var(--dark);
+        color: var(--primary);
       }
 
       /* Секция с картой */
@@ -500,6 +507,10 @@
         display: none;
       }
 
+      .schedule-details.no-border {
+        border: none;
+      }
+
       /* Адаптивность */
       @media (max-width: 768px) {
         h1 {
@@ -560,7 +571,7 @@
         }
 
         .register-btns > .btn {
-          width: 65%;
+          width: 85%;
           background-color: white;
           color: black;
           text-align: center;
@@ -589,13 +600,13 @@
           href="https://docs.google.com/forms/d/e/1FAIpQLSchnCjOHkzzY8Lyzmzrm7UVSEFTvs8hqDl1wVKhzuGdRtFsPQ/viewform"
           class="btn"
           target="_blank"
-          >Classes</a
+          >Регистрация на классы</a
         >
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLScc7k2nrkGH3fw6lO2iOz5NoduTNUw3HNef416fZtO4C_QhJw/viewform?pli=1"
           class="btn"
           target="_blank"
-          >Battles</a
+          >Регистрация на баттлы</a
         >
       </div>
     </section>
@@ -610,13 +621,13 @@
               href="https://docs.google.com/forms/d/e/1FAIpQLSchnCjOHkzzY8Lyzmzrm7UVSEFTvs8hqDl1wVKhzuGdRtFsPQ/viewform"
               class="btn"
               target="_blank"
-              >Classes</a
+              >Регистрация на классы</a
             >
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLScc7k2nrkGH3fw6lO2iOz5NoduTNUw3HNef416fZtO4C_QhJw/viewform?pli=1"
               class="btn"
               target="_blank"
-              >Battles</a
+              >Регистрация на баттлы</a
             >
           </div>
         </div>
@@ -627,7 +638,7 @@
       id="schedule"
       class="section">
       <div class="container">
-        <h2>Расписание</h2>
+        <h2>Тайминг</h2>
 
         <div class="schedule-container">
           <div class="schedule-day fade-in">
@@ -636,21 +647,21 @@
             <div class="schedule-item">
               <div class="schedule-time">11:00 - 12:30</div>
               <div class="schedule-details">
-                <p class="schedule-artist">Юля</p>
+                <p class="schedule-artist">Derevyanko Julia</p>
               </div>
             </div>
 
             <div class="schedule-item delay-1">
               <div class="schedule-time">12:45 - 14:15</div>
               <div class="schedule-details">
-                <p class="schedule-artist">Маша</p>
+                <p class="schedule-artist">Masha Footonfaya</p>
               </div>
             </div>
 
             <div class="schedule-item delay-2">
               <div class="schedule-time">14:30 - 16:00</div>
               <div class="schedule-details">
-                <p class="schedule-artist">Сабрина</p>
+                <p class="schedule-artist">Sabrina</p>
               </div>
             </div>
           </div>
@@ -659,30 +670,38 @@
             <h3>Battles</h3>
 
             <div class="schedule-item delay-3">
-              <div class="schedule-time">18:00 - 19:00</div>
+              <div class="schedule-time">18:00</div>
               <div class="schedule-details">
+                <h4 class="schedule-title primary">Начало</h4>
+              </div>
+            </div>
+            <div class="schedule-item delay-3">
+              <div class="schedule-details no-border">
                 <h4 class="schedule-title">Dancehall Beginners Battle</h4>
               </div>
             </div>
 
             <div class="schedule-item delay-4">
-              <div class="schedule-time">19:00 - 20:00</div>
-              <div class="schedule-details">
+              <div class="schedule-details no-border">
                 <h4 class="schedule-title">Dancehall Pro Battle</h4>
               </div>
             </div>
 
             <div class="schedule-item delay-5">
-              <div class="schedule-time">20:00 - 21:00</div>
-              <div class="schedule-details">
+              <div class="schedule-details no-border">
                 <h4 class="schedule-title">Female Dancehall Battle</h4>
               </div>
             </div>
 
             <div class="schedule-item delay-6">
-              <div class="schedule-time">21:00 - 22:00</div>
-              <div class="schedule-details">
+              <div class="schedule-details no-border">
                 <h4 class="schedule-title">Vibe Battle</h4>
+              </div>
+            </div>
+            <div class="schedule-item delay-3">
+              <div class="schedule-time">22:00</div>
+              <div class="schedule-details">
+                <h4 class="schedule-title primary">Окончание</h4>
               </div>
             </div>
           </div>
@@ -712,14 +731,7 @@
           <div class="location-card fade-in delay-2">
             <h3>Дата</h3>
             <p>23 августа 2025</p>
-            <p>11:00 - 22:00</p>
           </div>
-
-          <!-- <div class="location-card fade-in delay-3">
-            <h3>Контакты</h3>
-            <p>+7 (495) 123-45-67</p>
-            <p>info@goodvibes.ru</p>
-          </div> -->
         </div>
       </div>
     </section>
@@ -797,50 +809,6 @@
         myMap.controls.remove('fullscreenControl');
         myMap.controls.remove('rulerControl');
       }
-
-      // function initMap() {
-      //   // Координаты места проведения (Парк Музеон)
-      //   const location = { lat: 55.7358, lng: 37.6068 };
-
-      //   // Создание карты
-      //   const map = new ymaps.Map('map', {
-      //     center: location,
-      //     zoom: 16,
-      //   });
-
-      //   // Добавление метки
-      //   const placemark = new ymaps.Placemark(
-      //     location,
-      //     {
-      //       hintContent: 'Парк искусств "Музеон"',
-      //       balloonContent: 'Место проведения фестиваля Good Vibes Only',
-      //     },
-      //     {
-      //       iconLayout: 'default#image',
-      //       iconImageHref: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
-      //       iconImageSize: [40, 40],
-      //       iconImageOffset: [-20, -40],
-      //     }
-      //   );
-
-      //   map.geoObjects.add(placemark);
-      //   map.controls.remove('geolocationControl');
-      //   map.controls.remove('searchControl');
-      //   map.controls.remove('trafficControl');
-      //   map.controls.remove('typeSelector');
-      //   map.controls.remove('fullscreenControl');
-      //   map.controls.remove('rulerControl');
-      // }
-
-      // Обработка формы
-      // document.getElementById('event-form').addEventListener('submit', function (e) {
-      //   e.preventDefault();
-
-      //   // Здесь должна быть логика отправки формы
-      //   // Для демонстрации просто покажем сообщение
-      //   alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
-      //   this.reset();
-      // });
 
       // Анимация при скролле
       function animateOnScroll() {
